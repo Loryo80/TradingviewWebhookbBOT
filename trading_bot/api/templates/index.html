@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        h1 {
+            color: #333;
+        }
+        .status-card {
+            background-color: #e6f7ff;
+            border-left: 4px solid #1890ff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 3px;
+        }
+        .trades-section {
+            margin-top: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f8f8f8;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Trading Bot Dashboard</h1>
+            <p>Monitor your trading bot's activity and performance</p>
+        </header>
+
+        <div class="status-card">
+            <h2>System Status</h2>
+            <p>Status: <strong>Active</strong></p>
+            <p>Last Update: <span id="last-update">-</span></p>
+        </div>
+
+        <div class="trades-section">
+            <h2>Recent Trades</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>Action</th>
+                        <th>Price</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="trades-table">
+                    <tr>
+                        <td colspan="5" style="text-align: center;">No recent trades</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <p>TradingView Webhook Bot v1.0.0</p>
+        </div>
+    </div>
+
+    <script>
+        // Update the last update time
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('last-update').textContent = now.toLocaleString();
+        }
+
+        // Initialize the page
+        function init() {
+            updateTime();
+            // Update the time every minute
+            setInterval(updateTime, 60000);
+        }
+
+        // Run initialization when the page loads
+        window.onload = init;
+    </script>
+</body>
+</html>
